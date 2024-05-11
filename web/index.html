@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <base href="$FLUTTER_BASE_HREF">
+  <meta charset="UTF-8">
+  <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+  <meta name="description" content="A new Flutter project.">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="web_project1">
+  <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png">
+  <link id="favicon" rel="icon" type="image/png" href="assets/icons/logo.png"/>
+  <title>Project_Valor</title>
+  <link rel="manifest" href="manifest.json">
+  <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY"></script>
+  <script>
+    // The value below is injected by flutter build, do not touch.
+    var serviceWorkerVersion = null;
+  </script>
+  <script src="flutter.js" defer></script>
+  <script>
+    function updateFavicon() {
+      const darkModeMediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+      const faviconLink = document.getElementById('favicon');
+      faviconLink.href = darkModeMediaQuery.matches ? 'icons/logo_dark.png' : 'icons/logo.png';
+
+      darkModeMediaQuery.addListener((e) => {
+        const newFavicon = e.matches ? 'icons/logo_dark.png' : 'icons/logo.png';
+        faviconLink.href = newFavicon;
+      });
+    }
+
+    window.onload = updateFavicon;
+  </script>
+</head>
+<body>
+  <script>
+    window.addEventListener('load', function(ev) {
+      _flutter.loader.loadEntrypoint({
+        serviceWorker: {
+          serviceWorkerVersion: serviceWorkerVersion,
+        },
+        onEntrypointLoaded: function(engineInitializer) {
+          engineInitializer.initializeEngine().then(function(appRunner) {
+            appRunner.runApp();
+          });
+        }
+      });
+    });
+  </script>
+</body>
+</html>
